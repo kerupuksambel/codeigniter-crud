@@ -1,0 +1,1 @@
+<p>Selamat datang, <?php echo $user; ?>!</p>
