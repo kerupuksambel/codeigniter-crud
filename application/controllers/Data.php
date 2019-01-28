@@ -18,10 +18,10 @@
 						break;
 
 					case 'view':
-						if(!isset($id)){
+						if($id === NULL){
 							$this->view();
 						}else{
-							$this->view($id)
+							$this->view($id);
 						}
 						break;
 
@@ -68,9 +68,14 @@
 			}
 		}
 
-		public function view($id ){
-			$data['arr'] = $this->data_model->get_data();
-			$this->load->view("data/view", $data);
+		public function view($id = NULL){
+			if($id === NULL){
+				$data['arr'] = $this->data_model->get_data();
+				$this->load->view("data/view", $data);
+			}else{
+				$data['arr'] = $this->data_model->get_data($id);
+				$this->load->view("data/view_item", $data);
+			}
 		}
 
 		public function delete(){}

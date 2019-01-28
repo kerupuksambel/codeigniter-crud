@@ -34,10 +34,19 @@
 			return $r;
 		}
 
-		public function get_data(){
-			$q = array(
-				'' => 'a'
-			);
+		public function get_data($id = NULL){
+			if($id !== NULL){
+				$q = array(
+					'id' => $id, 
+				);
+
+				$query = $this->db->get_where('data', $q);
+				if($query->num_rows() == 0){
+					show_404();
+				}else{
+					return $query->result_array();
+				}
+			}
 
 			$query = $this->db->get('data');
 			$result = $query->result_array();
