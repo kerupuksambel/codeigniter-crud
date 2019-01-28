@@ -7,7 +7,7 @@
 			$this->load->model('data_model');
 		}
 
-		public function index($act = ""){
+		public function index($act = "", $id = NULL){
 			$this->load->library('session');
 			$this->load->helper('url');
 			$s = $this->session->userdata('verified');
@@ -16,17 +16,21 @@
 					case 'add':
 						$this->add();
 						break;
-					
-					case 'delete':
-						$this->delete();
-						break;
 
 					case 'view':
-						$this->view();
+						if(!isset($id)){
+							$this->view();
+						}else{
+							$this->view($id)
+						}
 						break;
 
 					case 'update':
 						$this->update();
+						break;
+					
+					case 'delete':
+						$this->delete();
 						break;
 
 					default:
@@ -64,7 +68,7 @@
 			}
 		}
 
-		public function view(){
+		public function view($id ){
 			$data['arr'] = $this->data_model->get_data();
 			$this->load->view("data/view", $data);
 		}
