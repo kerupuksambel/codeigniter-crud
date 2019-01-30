@@ -118,7 +118,7 @@
 					}else{
 						echo "Tidak bisa diubah";
 					}
-					redirect("data/delete");
+					redirect("data/update");
 				}
 			}
 		}
