@@ -26,15 +26,23 @@
 						break;
 
 					case 'update':
-						$this->update();
+						$this->update($id);
 						break;
-					
+
 					case 'delete':
-						$this->delete();
+						if($id === NULL){
+							$this->delete();
+						}else{
+							$this->delete($id);
+						}
+						break;
+
+					case "":
+						redirect('member');
 						break;
 
 					default:
-						redirect('member');
+						show_404();
 						break;
 				}
 			}else{
@@ -68,7 +76,7 @@
 			}
 		}
 
-		public function view($id = NULL){
+		private function view($id = NULL){
 			if($id === NULL){
 				$data['arr'] = $this->data_model->get_data();
 				$this->load->view("data/view", $data);
@@ -78,8 +86,62 @@
 			}
 		}
 
-		public function delete(){}
+		private function update($id = NULL){
+			if($id === NULL){
+				$p = $this->data_model->get_data();
 
-		public function edit(){}
+				$data = array(
+					'rows' => $p
+				);
+				$this->load->view('data/list_update', $data);
+			}else{
+				$this->form_validation->set_rules('name', 'Name', 'required');
+				$this->form_validation->set_rules('content', 'Content', 'required');
+
+				if($this->form_validation->run() === FALSE){
+					$p = $this->data_model->get_data($id);
+					if(count($p) != 0){
+						$in = array(
+							'nama' => $p[0]['data_name'],
+							'konten' => $p[0]['data_value'],
+							'id' => $id
+						);
+
+						$this->load->view('data/update', $in);
+					}else{
+						show_404();
+					}
+				}else{
+					$r = $this->data_model->set_data($id);
+					if($r['stat'] == TRUE){
+						echo "Bisa diubah";
+					}else{
+						echo "Tidak bisa diubah";
+					}
+					redirect("data/delete");
+				}
+			}
+		}
+
+		private function delete($id = NULL){
+			//There's still a problem in delete part, will try to repair by... how?
+			//And on the update tho
+			if($id === NULL){
+				$p = $this->data_model->get_data();
+
+				$data = array(
+					'rows' => $p
+				);
+				$this->load->view('data/list_delete', $data);
+			}else{
+				echo "Sukses";
+				$stat = $this->data_model->delete_data($id);
+				if($stat){
+					redirect("data/delete");
+				}else{
+					show_404();
+				}
+			}
+		}
 	}
 ?>

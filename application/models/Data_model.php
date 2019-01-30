@@ -8,7 +8,7 @@
 			$this->load->database();
 		}
 
-		public function set_data(){
+		public function set_data($id = NULL){
 			$name = $this->security->xss_clean($this->input->post('name'));
 			$content = $this->security->xss_clean($this->input->post('content'));
 
@@ -16,7 +16,21 @@
 				'data_name' => $name,
 				'data_value' => $content
 			);
-			$query = $this->db->insert('data', $q);
+
+			if($id === NULL){
+				$query = $this->db->insert('data', $q);
+			}else{
+				$this->db->where('id', $id);
+				$query = $this->db->update('data', $q);
+				if(!$query){
+					$r = array(
+						'stat' => false
+					);
+
+					return $r;
+				}
+			}
+
 			if($this->db->affected_rows() == 1){
 				//Success
 				$r = array(
@@ -53,6 +67,16 @@
 			return $result;
 		}
 
-		public function delete_data(){}
+		public function delete_data($id){
+			$q = array(
+				'id' => $id
+			);
+			$query = $this->db->delete('data', $q);
+			if($query){
+				return true;
+			}else{
+				return false;
+			}
+		}
 	}
 ?>
