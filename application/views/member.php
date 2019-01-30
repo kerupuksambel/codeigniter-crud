@@ -11,6 +11,6 @@
 	<li><a href="logout">Logout</a></li>
 </ul>
 <div class="img">
-	<img src="../assets/img/img_member.jpg"></img>
+	<img src="assets/img/img_member.jpg"></img>
 </div>
 </html>

@@ -55,6 +55,6 @@ $route['data/(:any)'] = 'data/index/$1';
 // $route['data/add'] = 'data/index/add';
 // $route['data/view/(:any)'] = 'data/index/view/$1';
 // $route['data/update/(:any)'] = 'data/index/update/$1';
-// $route['assets/'] = 'assets/'
+// $route['assets/(:any)'] = 'assets/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
