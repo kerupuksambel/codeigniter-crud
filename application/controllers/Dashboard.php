@@ -20,8 +20,8 @@
 					'page' => 'member',
 					'data' => $pass 
 				);
-				// $this->load->view("member", $pass);
-				$this->load->view("template/dashboard", $data);
+				$this->load->view("member", $pass);
+				// $this->load->view("template/dashboard", $data);
 			}else{
 				redirect('login');
 			}
