@@ -1,7 +1,7 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Member extends CI_Controller{
+	class Dashboard extends CI_Controller{
 
 		function __construct(){
 			parent::__construct();
@@ -12,10 +12,16 @@
 		function index(){
 			$v = $this->session->userdata('verified');
 			if($v){
-				$data = array(
+				$pass = array(
 					"nama_user" => $this->session->userdata('user')
 				);
-				$this->load->view("member", $data);
+
+				$data = array(
+					'page' => 'member',
+					'data' => $pass 
+				);
+				// $this->load->view("member", $pass);
+				$this->load->view("template/dashboard", $data);
 			}else{
 				redirect('login');
 			}

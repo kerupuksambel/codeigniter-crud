@@ -9,5 +9,5 @@
 	<label for="password">Password</label>
 	<input type="password" name="password"/>
 	<input type="submit" value="Submit"/>
-	<img src="assets/img/img_login.jpg"/>
+	<img src='<?php echo base_url();?>assets/img/img_login.jpg'/>
 </form>

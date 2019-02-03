@@ -16,7 +16,7 @@
 
 			$p = $this->session->userdata('verified');
 			if($p){
-				redirect('member');
+				redirect('dashboard');
 			}else{
 				$this->load->view('login', $data);
 			}
@@ -37,7 +37,7 @@
 					'nama_user' => $this->session->user
 				);
 
-				redirect('member');
+				redirect('dashboard');
 			}else{
 				$data = array(
 					'msg' => "Data Anda salah."

@@ -11,7 +11,7 @@
 		function index(){
 			$v = $this->session->userdata('verified');
 			if(isset($v)){
-				redirect('member');
+				redirect('dashboard');
 			}else{
 				redirect('login');
 			}

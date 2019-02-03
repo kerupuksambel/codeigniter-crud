@@ -38,7 +38,15 @@
 						break;
 
 					case "":
-						redirect('member');
+						redirect('dashboard');
+						break;
+
+					case 'toggle':
+						if($id === NULL){
+							$this->toggle();
+						}else{
+							$this->toggle($id);
+						}
 						break;
 
 					default:
@@ -91,9 +99,11 @@
 				$p = $this->data_model->get_data();
 
 				$data = array(
-					'rows' => $p
+					'rows' => $p,
+					'link' => "update",
+					'act' => "Update"
 				);
-				$this->load->view('data/list_update', $data);
+				$this->load->view('data/list', $data);
 			}else{
 				$this->form_validation->set_rules('name', 'Name', 'required');
 				$this->form_validation->set_rules('content', 'Content', 'required');
@@ -130,14 +140,35 @@
 				$p = $this->data_model->get_data();
 
 				$data = array(
-					'rows' => $p
+					'rows' => $p,
+					'link' => "delete",
+					'act' => "Delete"
 				);
-				$this->load->view('data/list_delete', $data);
+				$this->load->view('data/list', $data);
 			}else{
 				echo "Sukses";
 				$stat = $this->data_model->delete_data($id);
 				if($stat){
 					redirect("data/delete");
+				}else{
+					show_404();
+				}
+			}
+		}
+
+		private function toggle($id = NULL){
+			if($id === NULL){
+				$p = $this->data_model->get_data();
+
+				$data = array(
+					'rows' => $p
+				);
+				$this->load->view('data/list_toggle', $data);
+			}else{
+				$p = $this->data_model->toggle_data($id);
+
+				if($p){
+					redirect('data/toggle');
 				}else{
 					show_404();
 				}

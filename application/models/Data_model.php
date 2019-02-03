@@ -78,5 +78,24 @@
 				return false;
 			}
 		}
+
+		public function toggle_data($id){
+			$r = $this->get_data($id);
+			$perm = $r[0]['permission'];
+			$new_perm = abs($perm - 1);
+
+			$q = array(
+				'permission' => $new_perm
+			);
+
+			$this->db->where('id', $id);
+			$query = $this->db->update('data', $q);
+
+			if($query){
+				return true;
+			}else{
+				return false;
+			}
+		}
 	}
 ?>
