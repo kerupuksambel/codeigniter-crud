@@ -46,7 +46,7 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-			$("nav li a").click(function(e){
+			$("nav #sidebar li a").click(function(e){
 				e.preventDefault();
 				$.ajax({
 					url: $(this).attr("href"),
@@ -54,7 +54,7 @@
 						$("#page-wrapper .container-fluid").html(res);
 					}
 				})
-			})
+			});
 		</script>
 	</body>
 </html>

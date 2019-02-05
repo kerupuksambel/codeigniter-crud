@@ -1,8 +1,8 @@
-<div class="collapse navbar-collapse navbar-ex1-collapse">
+<div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
     <ul class="nav navbar-nav side-nav">
-        <li class="active">
+        <!-- <li class="active">
             <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-        </li>
+        </li> -->
         <li>
             <a href="data/add"><i class="fa fa-fw fa-plus"></i> Add Data</a>
         </li>
