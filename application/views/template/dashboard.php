@@ -46,15 +46,15 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-			$("nav #sidebar li a").click(function(e){
-				e.preventDefault();
-				$.ajax({
-					url: $(this).attr("href"),
-					success: function(res){
-						$("#page-wrapper .container-fluid").html(res);
-					}
-				})
-			});
+			// $("nav #sidebar li a").click(function(e){
+			// 	e.preventDefault();
+			// 	$.ajax({
+			// 		url: $(this).attr("href"),
+			// 		success: function(res){
+			// 			$("#page-wrapper .container-fluid").html(res);
+			// 		}
+			// 	})
+			// });
 		</script>
 	</body>
 </html>
