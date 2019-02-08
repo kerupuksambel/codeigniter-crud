@@ -78,10 +78,19 @@
 							'content' => $r['content']
 						);
 
-						$this->load->view('data/success', $data);
+						$p = array(
+							'page' => 'data/success',
+							'data' => $data
+						);
+
+						$this->load->view('template/dashboard', $p);
+
+						unset($_POST);
 					}
 				}else{
-					$this->load->view('data/add');
+					$p = array('page' => 'data/add', 'data' => NULL);
+
+					$this->load->view('template/dashboard', $p);
 				}
 			}
 		}
@@ -89,10 +98,20 @@
 		private function view($id = NULL){
 			if($id === NULL){
 				$data['arr'] = $this->data_model->get_data();
-				$this->load->view("data/view", $data);
+				$p = array(
+					'page' => 'data/view',
+					'data' => $data
+				);
+
+				$this->load->view("template/dashboard", $p);
 			}else{
 				$data['arr'] = $this->data_model->get_data($id);
-				$this->load->view("data/view_item", $data);
+				$p = array(
+					'page' => 'data/view_item',
+					'data' => $data
+				);
+
+				$this->load->view("template/dashboard", $p);
 			}
 		}
 
@@ -105,7 +124,13 @@
 					'link' => "update",
 					'act' => "Update"
 				);
-				$this->load->view('data/list', $data);
+
+				$p = array(
+					'page' => 'data/list',
+					'data' => $data
+				);
+
+				$this->load->view("template/dashboard", $p);
 			}else{
 				$this->form_validation->set_rules('name', 'Name', 'required');
 				$this->form_validation->set_rules('content', 'Content', 'required');
@@ -119,13 +144,19 @@
 							'id' => $id
 						);
 
-						$this->load->view('data/update', $in);
+						$p = array(
+							'page' => 'data/update',
+							'data' => $in
+						);
+
+						$this->load->view("template/dashboard", $p);
 					}else{
 						show_404();
 					}
 				}else{
 					$r = $this->data_model->set_data($id);
 					if($r['stat'] == TRUE){
+						//Sending messages to data/update
 						echo "Bisa diubah";
 					}else{
 						echo "Tidak bisa diubah";
@@ -136,8 +167,6 @@
 		}
 
 		private function delete($id = NULL){
-			//There's still a problem in delete part, will try to repair by... how?
-			//And on the update tho
 			if($id === NULL){
 				$p = $this->data_model->get_data();
 
@@ -146,7 +175,13 @@
 					'link' => "delete",
 					'act' => "Delete"
 				);
-				$this->load->view('data/list', $data);
+
+				$p = array(
+					'page' => 'data/list',
+					'data' => $data
+				);
+
+				$this->load->view("template/dashboard", $p);
 			}else{
 				echo "Sukses";
 				$stat = $this->data_model->delete_data($id);
@@ -165,7 +200,13 @@
 				$data = array(
 					'rows' => $p
 				);
-				$this->load->view('data/list_toggle', $data);
+
+				$p = array(
+					'page' => 'data/list_toggle',
+					'data' => $data
+				);
+
+				$this->load->view("template/dashboard", $p);
 			}else{
 				$p = $this->data_model->toggle_data($id);
 

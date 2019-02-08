@@ -5,7 +5,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="dashboard">CodeIgniter CRUD</a>
+    <a class="navbar-brand" href="<?php echo base_url('dashboard'); ?>">CodeIgniter CRUD</a>
 </div>
 <!-- Top Menu Items -->
 <ul class="nav navbar-right top-nav">

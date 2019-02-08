@@ -3,7 +3,7 @@
 	foreach ($arr as $data) :
 		if($data['permission'] == 1){
 ?>
-<a href='data/view/<?php echo $data["id"]?>' class='data-title'>
+<a href='<?php echo base_url('data/view/'.$data["id"]); ?>' class='data-title'>
 	<h2>
 		<?php echo $data['data_name']; ?>
 	</h2>
