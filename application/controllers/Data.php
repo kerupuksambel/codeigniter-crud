@@ -183,7 +183,6 @@
 
 				$this->load->view("template/dashboard", $p);
 			}else{
-				echo "Sukses";
 				$stat = $this->data_model->delete_data($id);
 				if($stat){
 					redirect("data/delete");

@@ -11,6 +11,6 @@
 	<li><a href="logout">Logout</a></li>
 </ul>
 <div class="img">
-	<img src='<?php echo base_url(); ?>assets/img/img_member.jpg'></img>
+	<img src='<?php echo base_url('assets/img/img_member.jpg'); ?>'></img>
 </div>
 </html>

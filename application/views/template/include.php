@@ -6,8 +6,6 @@
 <title>CodeIgniter CRUD</title>
 <!-- Bootstrap Core CSS -->
 <link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
-<!-- Custom CSS -->
-<link href="<?php echo base_url('assets/css/sb-admin.css'); ?>" rel="stylesheet">
 <!-- Morris Charts CSS -->
 <link href="<?php echo base_url('assets/css/plugins/morris.css'); ?>" rel="stylesheet">
 <!-- Custom Fonts -->

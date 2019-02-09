@@ -14,7 +14,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['user']; ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li>
-                <a href="logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                <a href="<?php echo base_url('logout'); ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
             </li>
         </ul>
     </li>

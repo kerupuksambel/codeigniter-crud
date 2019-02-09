@@ -1,5 +1,8 @@
 <?php 
-	echo validation_errors();
+	$n = validation_errors();
+	if($n != ""){
+		echo "<div class='alert-danger alert'>".validation_errors()."</div>";
+	}
 	echo form_open('data/add'); 
 ?>
 	<label for="name">Nama</label><br/>
