@@ -1,4 +1,8 @@
 # CodeIgniter CRUD
+
+This project would be abandoned for a long time, perhaps. Until I've done doing my other (noob) project.
+~~dih gblk yang ini belum kelar dah diabandon ae~~
+
 Pretty semantic title, this is a CRUD system and login system built with CI 3.
 
 This CRUD system contains :
